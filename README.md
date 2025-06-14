@@ -71,7 +71,7 @@ docker logs --tail 100 -f electrumx
 
 查看API服务日志：
 ```
-docker logs tbcapi --tail 100
+docker logs goapi --tail 100
 ```
 
 测试API是否启动：
@@ -132,31 +132,7 @@ docker compose down -v --remove-orphans
 
 ## 注意事项
 
-部署过程中，如果遇到tbcapi捕获区块建立索引过慢的情况：使用docker logs tbcapi -f -n 10 通过日志发现每两秒才扫描一个新块
-可以采用以下方法解决：
+1.INDEX重启需要重新建立数据库，比较浪费时间（大约1个小时）
 
-1.使用docker stop tbcapi暂时关闭tbcapi
-
-2.使用docker logs electrumx -f -n 10查看electrumx的同步情况
-
-3.等待electrumx同步到最新区块后，使用docker start tbcapi打开tbcapi开始同步
-
-4.使用docker logs tbcapi -f -n 10查看tbcapi的同步情况
-
-5.等待tbcapi同步到最新区块后，可对外提供服务以及自行测试
-
-该问题只会在从头部署轻节点时出现，后续重启，升级都不会出现这个问题。
-
-其它问题：
-
-1.目前TBCAPI重启需要重新建立数据库，比较浪费时间（大约1个小时）
-
-该问题我们会在后续tbcapi功能更新中一并解决，也会发布新的镜像；该问题不会影响tbcapi本身的服务质量，只是会造成tbcapi同步时间过长，不会造成功能性故障。
-
-2.electrumx重启会导致重启前的数据库中的时间和高度信息被覆盖为重启前的最新高度和时间，
-
-因此重启electrumx需要将持久化数据删除，让其从头建立数据库，可规避对先前数据库的修改。
-
-该问题后续也会改正，目前的工作主要集中在tbcapi上的性能优化，electrumx需要重启的次数很少。
 
 

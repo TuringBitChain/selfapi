@@ -1,0 +1,38 @@
+server:
+  name: ginproject
+  host: 0.0.0.0
+  port: 8080
+log:
+  path: ./logs/${server.name}.log
+  level: "INFO"
+
+# 数据库配置
+db:
+  host: "db"
+  port: 3306
+  username: "root"
+  password: "TBCdb@#2024Secure!"
+  database: "TBC20721"
+  charset: "utf8mb4"
+  maxidleconns: 10
+  maxopenconns: 100
+
+# TBCNode RPC认证配置
+tbcnode:
+  url: "http://tbcnode:8332"
+  user: "tbcuser"
+  password: "randompasswd" 
+  timeout: 30 # 连接超时时间(秒)
+  maxidleconns: 10
+  maxopenconns: 100
+
+# ElectrumX RPC配置
+electrumx:
+  host: "electrumx"
+  port: 50001
+  timeout: 30 # 连接超时时间(秒)
+  retry_count: 3 # 重试次数 
+  use_tls: false
+  protocol: "tcp"
+  maxidleconns: 10
+  maxopenconns: 100
