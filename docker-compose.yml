@@ -68,8 +68,8 @@ services:
     ports:
       - "5000:8080" #this is the port for the api to listen
     volumes:
-      - ./apiconf/conf/conf.yaml:/app/conf/conf.yaml
-      - ./apiconf/logs/:/app/logs/
+      - ./apiconf/conf:/app/conf:ro
+      - ./apiconf/logs:/app/logs
     depends_on:
       tbcnode:
         condition: service_healthy
