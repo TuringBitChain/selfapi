@@ -12,8 +12,8 @@
 
 2. 拉取项目
    ```
-   git clone https://github.com/cha1atu/lightapi
-   cd lightapi
+   git clone https://github.com/TuringBitChain/selfapi
+   cd selfapi
    ```
 
 
@@ -66,8 +66,14 @@ docker logs electrumx --tail 100
 docker logs --tail 100 -f electrumx
 ```
 
+### 3. INDEX检查
 
-### 3. TBCAPI检查
+查看API服务日志：
+```
+docker logs index --tail 100
+```
+
+### 4. TBCAPI检查
 
 查看API服务日志：
 ```
